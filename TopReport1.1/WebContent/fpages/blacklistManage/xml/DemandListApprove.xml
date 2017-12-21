@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 用于直接生成SQL语句，支持同步和异步提交 -->
+<!-- title:标题 navigate:导航信息 type:方式（sql|call) interface:是否显示输入条件页面(true|false) databusid:数据总线编号 transdataactionurl:数据整理URL
+	async:异步提交标志 pagesize:页面显示记录数(缺省为10) -->
+
+<CommQry title="需求收费管理" navigate="需求收费管理" type="call" interface="true" pagesize="20" async="true" databusid=""
+         txnlogflag="true" transdataactionurl="/trans/TransDataAction.do" getterclassname="com.cibfintech.blacklist.bankblacklist.getter.DemandListApproveGetter">
+
+    <Include id="BankParam" />
+
+    <Fields>
+        <Field id="select" desc="选择" status="N" method="None" datetype="checkbox" edittype="checkbox" readonly="false"
+               primary="true" type="String" size="20" default="false" xpath="/selected" />
+
+        <Field id="id" desc="需求审核管理 ID" edittype="text" datatype="string" status="F" xpath="/id" />
+
+        <Field id="demand_list_no" desc="需求单号" edittype="text" datatype="string" status="F" xpath="/demand_list_no" />
+
+        <Field id="approve_user_id" desc="审批操作员id" edittype="text" datatype="string" status="N" xpath="/approve_user_id" />
+
+        <Field id="brcode" desc="审批机构" edittype="text" datatype="string" status="N" xpath="/brcode" />
+
+        <Field id="approve_state" desc="审批状态" edittype="text" datatype="string" status="N" xpath="/approve_state" />
+
+        <Field id="approve_passday" desc="银行代码" edittype="text" datatype="string" status="F" xpath="/approve_passday" />
+        <Field id="opr" desc="操作" status="N" method="None" xpath="" primary="true" type="" default="" tip="操作" require="" />
+    </Fields>
+
+    <Where>
+    </Where>
+
+    <Operations>
+        <Button id="btDetail" name="btDetail" desc="详细信息" operation=""
+                url="#" txn="" />
+
+        <Button id="btApprove" name="btApprove" desc="通过审核" operation="asysubmit"
+                updateClass="com.cibfintech.blacklist.bankblacklist.updater.DemandListApprove"
+                url="/fpages/blacklistManage/ftl/DemandListApprove.ftl"
+                icon="icon-ok" />
+
+        <Button id="btCancelApprove" name="btCancelApprove" desc="取消审核，重新审核" operation="asysubmit"
+                updateClass="com.cibfintech.blacklist.bankblacklist.updater.DemandListApprove"
+                url="/fpages/blacklistManage/ftl/DemandListApprove.ftl"
+                icon="icon-cancel" />
+    </Operations>
+</CommQry>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="resource.bean.blacklist">
+    <class name="NsDemandList" table="cop_demand">
+        <meta attribute="sync-DAO">false</meta>
+        <cache usage="read-write"></cache>
+
+        <id name="id" type="string" column="demand_list_no" length="32"/>
+        <property name="bank_name" type="string" column="bank_name" length="32"   />
+        <property name="bank_id" type="string" column="bank_id" length="32"   />
+        <property name="bank_type" type="string" column="bank_type" length="1"   />
+        <property name="bank_start" type="string" column="bank_start" length="32" />
+        <property name="hourly_wage" type="string" column="hourly_wage" length="6" />
+        <property name="demand_theme" type="string" column="demand_theme" length="20"   />
+        <property name="rel_system_name" type="string" column="rel_system_name" length="20" />
+        <property name="rel_system_team" type="string" column="rel_system_team" length="20"   />
+        <property name="dev_name" type="string" column="dev_name" length="10"   />
+        <property name="dev_day" type="string" column="dev_day" length="4"   />
+        <property name="dev_quote_day" type="string" column="dev_quote_day" length="4"   />
+        <property name="dev_confirm_day" type="string" column="dev_confirm_day" length="4"   />
+        <property name="confirm_no" type="string" column="confirm_no" length="20"   />
+        <property name="customer_manager" type="string" column="customer_manager" length="10"   />
+        <property name="cop_bank_principal" type="string" column="cop_bank_principal" length="10"   />
+        <property name="cop_bank_principal_phone" type="string" column="cop_bank_principal_phone" length="20"   />
+        <property name="status_cd" type="string" column="status_cd" length="1"/>
+        <property name="remarks" type="string" column="remarks" length="100"   />
+
+    </class>
+</hibernate-mapping>
