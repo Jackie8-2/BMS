@@ -63,8 +63,6 @@
 
 	<bean id="DemandListService"
 		  class="com.cibfintech.blacklist.bankblacklist.service.DemandListService" />
-	<bean id="DemandListApproveStateService"
-		  class="com.cibfintech.blacklist.bankblacklist.service.DemandListApproveStateService" />
 	<bean id="DemandListOperation"
 		  class="com.cibfintech.blacklist.operation.DemandListOperation" />
 </beans>

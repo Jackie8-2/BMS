@@ -7,7 +7,7 @@
          txnlogflag="true" transdataactionurl="/trans/TransDataAction.do" getterclassname="com.cibfintech.blacklist.bankblacklist.getter.DemandListEntryGetter">
 
     <Include id="BankParam" />
-    <PageQryExp type="XLS" limit="true" encoding="UTF-8" url="/trans/qryExp.do"  perfetch="15" />
+    <PageQryExp type="XLS" limit="true" encoding="UTF-8" url="/trans/qryExp.do" desc="批量下载需求信息" perfetch="15" />
 
     <Fields>
         <Field id="bank_id" desc="合作行编号" edittype="text" datatype="string" status="F" xpath="/bank_id" />

@@ -76,7 +76,7 @@ public class DemandListService {
      *
      * @param paramgroupId 参数段编号
      */
-    public List<NsDemandList> getAllBankBlacklist() throws CommonException {
+    public List<NsDemandList> getAllDemandlist() throws CommonException {
         BlackListDAO rootDAO = BlackListDAOUtils.getBlackListDAO();
         List<NsDemandList> list = rootDAO.queryByQL2List("1=1");
         for (int i = 0; i < list.size(); i++) {
@@ -124,6 +124,7 @@ public class DemandListService {
             ExceptionUtil.throwCommonException(" 需求重复");
         }
         try {
+            bankBlacklist.setIs_del("0");
             rootDAO.save(bankBlacklist);
             System.out.println(this.getClass().getName() + " 已插入或更新实体");
         } catch (CommonException e) {

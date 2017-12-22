@@ -20,7 +20,9 @@
                     <tr>
                         <td colspan="2">
 							<@CommonQueryMacro.DataTable id="datatable1" paginationbar="btAdd,-,btDel"
-                            fieldStr="bank_id,bank_name,hourly_wage,rel_system_team,dev_confirm_day,confirm_no,status_cd,remarks,opr"
+                            fieldStr="select,id,hourly_wage,demand_theme,rel_system_name,rel_system_team,"+
+                            "dev_name,dev_day,dev_quote_day,dev_confirm_day,confirm_no,"+
+                            "customer_manager,cop_bank_principal,cop_bank_principal_phone,remarks,opr"
                             width="100%" hasFrame="true"/><br/>
                         </td>
                     </tr>
@@ -38,7 +40,7 @@
 <script language="JavaScript">
     var op ="${op}";
 
-    function initCallGetter_post(DemandListEdit_dataset) {
+    function initCallGetter_post(dataset) {
         DemandListEdit_dataset.setParameter("op", op);
     }
 
@@ -53,7 +55,6 @@
     //系统刷新单元格
     function datatable1_opr_onRefresh(cell, value, record) {
         if (record) {
-            var status_cd = record.getValue("status_cd");
             var id = record.getValue("id");
             var select = record.getValue("select");
             var tempHtml = "<center>";
@@ -66,7 +67,11 @@
             cell.innerHTML = "";
         }
     }
-
+    function btCancel_onClickCheck(button) {
+        //unloadPageWindows("partWin");
+        //button.url = "/fpages/blacklistManage/ftl/InternationalBlacklist.ftl";
+        flushCurrentPage();
+    }
     //展示对比功能的js
     function datatable1_id_onRefresh(cell, value, record) {
         if (record) {
@@ -116,12 +121,13 @@
     }
 
     function btDel_postSubmit(button) {
-        alert("删除申请提交成功，请等待审核。");
+        alert("删除成功");
         button.url = "#";
         flushCurrentPage();
     }
 
     function btAdd_onClick(button) {
+        locate(id);
         DemandListEdit_dataset.insertRecord();
     }
 

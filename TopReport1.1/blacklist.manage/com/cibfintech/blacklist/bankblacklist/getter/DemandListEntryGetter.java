@@ -41,6 +41,7 @@ public class DemandListEntryGetter extends BaseGetter{
         int pageSize = this.getResult().getPage().getEveryPage();
         int pageIndex = this.getResult().getPage().getCurrentPage();
         StringBuffer hql = new StringBuffer(" from NsDemandList bblt where 1=1 ");
+        hql.append(" and bblt.is_del='0' ");
         if (StringUtils.isNotBlank(demand_theme)) {
             hql.append(" and bblt.demand_theme=?");
             list.add(demand_theme.trim());

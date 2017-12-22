@@ -351,24 +351,6 @@ public class ReportEnum {
 			return value;
 		}
 	}
-	public static enum DEMAND_APPROVE_STATE {
-		APPROVING("0", "待审核"), APPROVED("1", "已审核");
-		public String value;
-		public String name;
-
-		private DEMAND_APPROVE_STATE(String value, String name) {
-			this.value = value;
-			this.name = name;
-		}
-		public static String valueof(String value) {
-			for (int i = 0; i < values().length; i++) {
-				if (values()[i].value.equals(value)) {
-					return values()[i].name;
-				}
-			}
-			return value;
-		}
-	}
 
 	public static enum REPORT_IS {
 		YES("Y", "是"), NO("N", "否");

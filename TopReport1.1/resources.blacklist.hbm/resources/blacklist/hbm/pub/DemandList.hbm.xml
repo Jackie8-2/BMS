@@ -26,6 +26,6 @@
         <property name="cop_bank_principal_phone" type="string" column="cop_bank_principal_phone" length="20"   />
         <property name="status_cd" type="string" column="status_cd" length="1"/>
         <property name="remarks" type="string" column="remarks" length="100"   />
-
+        <property name="is_del" type="string" column="is_del" length="1"   />
     </class>
 </hibernate-mapping>

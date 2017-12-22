@@ -38,11 +38,7 @@
                 updateClass="com.cibfintech.blacklist.bankblacklist.updater.DemandListUpdate" url="/fpages/blacklistManage/ftl/DemandListEdit.ftl"
                 icon="icon-save" />
 
-        <Button id="btQueryVerify" name="btQueryVerify" desc="编辑完成，提交审核" operation="asysubmit"
-                updateClass="com.cibfintech.blacklist.bankblacklist.updater.DemandListUpdate" url="/fpages/blacklistManage/ftl/DemandListEdit.ftl"
-                icon="icon-save" />
-
-        <Button id="btCancel" name="btCancel" desc="返回" operation="submitform" url="/fpages/blacklistManage/ftl/DemandListEdit.ftl"
-                txn="" icon="icon-back" />
+        <Button id="btClose" name="btClose" desc="返回" operation="submitform"
+                url="/fpages/blacklistManage/ftl/DemandListEdit.ftl" txn="" icon="icon-back" />
     </Operations>
 </CommQry>

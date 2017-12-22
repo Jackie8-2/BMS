@@ -9,6 +9,8 @@
 
     <Include id="BankParam" />
     <Fields>
+        <Field id="select" desc="选择" status="N" method="None" datetype="checkbox" edittype="checkbox" readonly="false"
+               primary="true" type="String" size="20" default="false" xpath="/selected" />
         <Field id="bank_id" desc="合作行编号" edittype="text" datatype="string" status="F" xpath="/bank_id" />
         <Field id="bank_name" desc="合作行名称" edittype="text" datatype="string" status="N" xpath="/bank_name" />
         <Field id="bank_type" desc="合作行类型(1:股份制银行,2:城商行,3:商行/联社,4:村镇银行,5:其它)" status="F" readonly="true" translated="LIST:1,股份制银行;2,城商行;3,商行/联社;4,村镇银行;5,其它" require="false"
@@ -27,7 +29,6 @@
         <Field id="customer_manager" desc="数金客户经理" edittype="text" datatype="string" status="N" xpath="/customer_manager" />
         <Field id="cop_bank_principal" desc="合作行经办" edittype="text" datatype="string" status="N" xpath="/cop_bank_principal" />
         <Field id="cop_bank_principal_phone" desc="合作行经办电话" edittype="text" datatype="string" status="N" xpath="/cop_bank_principal_phone" />
-        <Field id="status_cd" desc="当前状态(0:待审核,1:正常)" edittype="text" datatype="string" status="N" xpath="/status_cd" translated="LIST:0,待审核;1,正常" />
         <Field id="remarks" desc="备注" edittype="textarea" datatype="string" status="N" xpath="/remarks" />
         <Field id="opr" desc="操作" status="N" method="None" xpath="" primary="true" type="" default="" tip="操作" require="" />
     </Fields>
@@ -37,8 +38,7 @@
         <TextBox id="demand_theme" default="" desc="需求主题" type="demand_theme" tip="" method="None" index="1"
         />
         <TextBox id="id" desc="需求单号" edittype="text" datatype="string" index="2" />
-        <Option id="status_cd" default="" desc="审核状态" type="status_cd" tip="" method="None" index="3"
-                translated="LIST:0,待审核;1,正常" />
+        <Option id="rel_system_name" default="" desc="关联系统名称" type="rel_system_name"  method="None" index="3"/>
     </Where>
 
     <Operations>

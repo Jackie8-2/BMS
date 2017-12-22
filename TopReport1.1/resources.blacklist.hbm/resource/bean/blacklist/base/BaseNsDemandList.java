@@ -26,6 +26,7 @@ public class BaseNsDemandList implements Serializable {
     private String cop_bank_principal_phone;
     private String status_cd;
     private String remarks;
+    private String is_del;
 
     public String getStatus_cd() {
         return status_cd;
@@ -221,7 +222,11 @@ public class BaseNsDemandList implements Serializable {
         this.remarks = remarks;
     }
 
+    public String getIs_del() {
+        return is_del;
+    }
 
-
-
+    public void setIs_del(String is_del) {
+        this.is_del = is_del;
+    }
 }
