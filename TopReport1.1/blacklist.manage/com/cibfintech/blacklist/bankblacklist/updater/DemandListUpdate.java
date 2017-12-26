@@ -28,14 +28,14 @@ public class DemandListUpdate extends BaseUpdate {
         // 返回结果对象
         UpdateResultBean updateResultBean = multiUpdateResultBean.getUpdateResultBeanByID(DATASET_ID);
 
-        // 返回黑名单对象
-        NsDemandList bankblacklist = new NsDemandList();
+        // 返回需求对象
+        NsDemandList demandList = new NsDemandList();
 
         OperationContext oc = new OperationContext();
         if (updateResultBean.hasNext()) {
             // 属性拷贝
             Map map = updateResultBean.next();
-            BaseUpdate.mapToObject(bankblacklist, map);
+            BaseUpdate.mapToObject(demandList, map);
             String op = updateResultBean.getParameter(PARAM_ACTION);
             String opSave = updateResultBean.getParameter(PARAM_ACTION_SAVE);
             op = (null == op || "" == op) ? "" : op;
@@ -49,7 +49,7 @@ public class DemandListUpdate extends BaseUpdate {
             }
             oc.setAttribute(DemandListOperation.IN_PARAM, op);
             oc.setAttribute(DemandListOperation.IN_PARAM_SAVE, opSave);
-            oc.setAttribute(DemandListOperation.IN_DEMAND_LIST, bankblacklist);
+            oc.setAttribute(DemandListOperation.IN_DEMAND_LIST, demandList);
             // call方式开启operation事务
             OPCaller.call(DemandListOperation.ID, oc);
             return updateReturnBean;

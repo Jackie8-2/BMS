@@ -64,12 +64,15 @@ public class DemandListOperation extends BaseOperation {
             } else if (CMD_EDIT.equals(cmd)) {
                 resource.bean.blacklist.NsDemandList fromBean = (resource.bean.blacklist.NsDemandList) context.getAttribute(IN_DEMAND_LIST);
                 resource.bean.blacklist.NsDemandList bean = service.selectById(fromBean.getId());
-
-                bean.setDev_confirm_day(fromBean.getDev_confirm_day());
-                bean.setRel_system_name(fromBean.getRel_system_name());
                 bean.setHourly_wage(fromBean.getHourly_wage());
-                bean.setRel_system_name(fromBean.getRel_system_name());
-                bean.setId(fromBean.getId());
+                bean.setDev_confirm_day(fromBean.getDev_confirm_day());
+                bean.setDev_quote_day(fromBean.getDev_quote_day());
+                bean.setRemarks(fromBean.getRemarks());
+                bean.setConfirm_no(fromBean.getConfirm_no());
+                bean.setCop_bank_principal(fromBean.getCop_bank_principal());
+                bean.setCop_bank_principal_phone(fromBean.getCop_bank_principal_phone());
+                bean.setDemand_theme(fromBean.getDemand_theme());
+                bean.setCustomer_manager(fromBean.getCustomer_manager());
                 bean.setStatus_cd("0");
                 service.modEntity(bean);
             }

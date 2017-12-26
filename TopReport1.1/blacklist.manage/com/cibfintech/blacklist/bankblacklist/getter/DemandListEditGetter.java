@@ -55,9 +55,6 @@ public class DemandListEditGetter extends BaseGetter{
             hql.append(" and bblt.id='").append(id.trim()).append("'");
             list.add(id.trim());
         }
-        if(getCommQueryServletRequest().getParameter("_button_id").equals("btClose")){
-            hql = new StringBuffer(" from NsDemandList bblt where bblt.is_del='0' ");
-        }
         PageQueryResult pqr = DemandListService.getInstance().pageQueryByHql(pageIndex, pageSize, hql.toString(), list);
         return pqr;
 

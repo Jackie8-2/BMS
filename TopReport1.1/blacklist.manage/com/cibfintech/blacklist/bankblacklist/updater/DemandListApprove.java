@@ -36,9 +36,7 @@ public class DemandListApprove extends BaseUpdate {
             NsDemandList bean = new NsDemandList();
             Map map = updateResultBean.next();
             String id = (String) map.get("id");
-            String blacklistID = (String) map.get("demand_list_no");
             bean.setId(id);
-            bean.setId(blacklistID);
             beans.add(bean);
         }
         OperationContext oc = new OperationContext();

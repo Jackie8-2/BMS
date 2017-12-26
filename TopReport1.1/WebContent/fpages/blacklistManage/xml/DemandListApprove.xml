@@ -3,7 +3,7 @@
 <!-- title:标题 navigate:导航信息 type:方式（sql|call) interface:是否显示输入条件页面(true|false) databusid:数据总线编号 transdataactionurl:数据整理URL
 	async:异步提交标志 pagesize:页面显示记录数(缺省为10) -->
 
-<CommQry title="需求收费管理" navigate="需求收费管理" type="call" interface="true" pagesize="20" async="true" databusid=""
+<CommQry title="需求收费审批" navigate="需求收费审批" type="call" interface="true" pagesize="20" async="true" databusid=""
          txnlogflag="true" transdataactionurl="/trans/TransDataAction.do" getterclassname="com.cibfintech.blacklist.bankblacklist.getter.DemandListApproveGetter">
 
     <Include id="BankParam" />
@@ -11,22 +11,32 @@
     <Fields>
         <Field id="select" desc="选择" status="N" method="None" datetype="checkbox" edittype="checkbox" readonly="false"
                primary="true" type="String" size="20" default="false" xpath="/selected" />
-
-        <Field id="id" desc="需求审核管理 ID" edittype="text" datatype="string" status="F" xpath="/id" />
-
-        <Field id="demand_list_no" desc="需求单号" edittype="text" datatype="string" status="F" xpath="/demand_list_no" />
-
-        <Field id="approve_user_id" desc="审批操作员id" edittype="text" datatype="string" status="N" xpath="/approve_user_id" />
-
-        <Field id="brcode" desc="审批机构" edittype="text" datatype="string" status="N" xpath="/brcode" />
-
-        <Field id="approve_state" desc="审批状态" edittype="text" datatype="string" status="N" xpath="/approve_state" />
-
-        <Field id="approve_passday" desc="银行代码" edittype="text" datatype="string" status="F" xpath="/approve_passday" />
-        <Field id="opr" desc="操作" status="N" method="None" xpath="" primary="true" type="" default="" tip="操作" require="" />
+        <Field id="bank_id" desc="合作行编号" edittype="text" datatype="string" status="F" readonly="true" xpath="/bank_id" />
+        <Field id="bank_name" desc="合作行名称" edittype="text" datatype="string" status="N" readonly="true" xpath="/bank_name" />
+        <Field id="bank_type" desc="合作行类型(1:股份制银行,2:城商行,3:商行/联社,4:村镇银行,5:其它)" edittype="select" status="F" readonly="true" translated="LIST:1,股份制银行;2,城商行;3,商行/联社;4,村镇银行;5,其它" require="false" type="String" xpath="/bank_type" />
+        <Field id="bank_start" desc="发起行" status="N" edittype="text" readonly="true" method="None" primary="false" type="String" default="" xpath="/bank_start" />
+        <Field id="hourly_wage" desc="工时费率（万/人月）" edittype="text" readonly="true" datatype="string" status="N" xpath="/hourly_wage" />
+        <Field id="id" desc="需求单号" edittype="text" datatype="string" readonly="true" status="N" xpath="/id" />
+        <Field id="demand_theme" desc="需求主题" edittype="text" readonly="true" datatype="string" status="N" xpath="/demand_theme" />
+        <Field id="rel_system_name" desc="关联系统名称" edittype="text" readonly="true"  datatype="string" status="N" xpath="/rel_system_name" />
+        <Field id="rel_system_team" desc="关系系统团队" edittype="text" readonly="true" datatype="string" status="N" xpath="/rel_system_team" />
+        <Field id="dev_name" desc="开发人员" edittype="text" datatype="string" readonly="true" status="N" xpath="/dev_name" />
+        <Field id="dev_day" desc="开发工作量（人天）" edittype="text" readonly="true" datatype="string" status="N" xpath="/dev_day" />
+        <Field id="dev_quote_day" desc="商务报价（人天）" edittype="text" readonly="true" datatype="string" status="N" xpath="/dev_quote_day" />
+        <Field id="dev_confirm_day" desc="确认工作量" edittype="text" readonly="true" datatype="string" status="N" xpath="/dev_confirm_day" />
+        <Field id="confirm_no" desc="确认书编号" edittype="text" readonly="true" datatype="string" status="N" xpath="/confirm_no" />
+        <Field id="customer_manager" desc="数金客户经理" edittype="text" readonly="true" datatype="string" status="N" xpath="/customer_manager" />
+        <Field id="cop_bank_principal" desc="合作行经办" edittype="text" readonly="true" datatype="string" status="N" xpath="/cop_bank_principal" />
+        <Field id="cop_bank_principal_phone" desc="合作行经办电话" edittype="text" readonly="true" datatype="string" status="N" xpath="/cop_bank_principal_phone" />
+        <Field id="status_cd" desc="当前状态(0:待审核,1:正常)" edittype="select" readonly="true" datatype="string" status="N" xpath="/status_cd" translated="LIST:0,待审核;1,正常" />
+        <Field id="remarks" desc="备注" edittype="textarea" datatype="string" readonly="true" status="N" xpath="/remarks" />
     </Fields>
 
     <Where>
+        <TextBox id="bank_name" desc="合作行名称" edittype="text" datatype="string" require="" index="0" />
+        <TextBox id="status_cd" default="" desc="审核状态" edittype="select" translated="LIST:0,待审核;1,正常" type="string" tip="" method="None" index="1"/>
+        <TextBox id="id" desc="需求单号" edittype="text" datatype="string" index="2" />
+        <TextBox id="rel_system_name" default="" desc="关联系统名称" type="string"  method="None" index="3"/>
     </Where>
 
     <Operations>
@@ -35,12 +45,6 @@
 
         <Button id="btApprove" name="btApprove" desc="通过审核" operation="asysubmit"
                 updateClass="com.cibfintech.blacklist.bankblacklist.updater.DemandListApprove"
-                url="/fpages/blacklistManage/ftl/DemandListApprove.ftl"
                 icon="icon-ok" />
-
-        <Button id="btCancelApprove" name="btCancelApprove" desc="取消审核，重新审核" operation="asysubmit"
-                updateClass="com.cibfintech.blacklist.bankblacklist.updater.DemandListApprove"
-                url="/fpages/blacklistManage/ftl/DemandListApprove.ftl"
-                icon="icon-cancel" />
     </Operations>
 </CommQry>

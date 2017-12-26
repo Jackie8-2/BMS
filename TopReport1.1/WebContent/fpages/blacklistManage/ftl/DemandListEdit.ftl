@@ -20,9 +20,9 @@
                     <tr>
                         <td colspan="2">
 							<@CommonQueryMacro.DataTable id="datatable1" paginationbar="btAdd,-,btDel"
-                            fieldStr="select,id,hourly_wage,demand_theme,rel_system_name,rel_system_team,"+
-                            "dev_name,dev_day,dev_quote_day,dev_confirm_day,confirm_no,"+
-                            "customer_manager,cop_bank_principal,cop_bank_principal_phone,remarks,opr"
+                            fieldStr="select,opr,id,hourly_wage,demand_theme,rel_system_name,rel_system_team,"+
+                            "dev_name,bank_start,dev_day,dev_quote_day,dev_confirm_day,confirm_no,"+
+                            "customer_manager,cop_bank_principal,cop_bank_principal_phone,remarks"
                             width="100%" hasFrame="true"/><br/>
                         </td>
                     </tr>

@@ -35,10 +35,9 @@
 
     <Where>
         <TextBox id="bank_name" desc="合作行名称" edittype="text" datatype="string" require="" index="0" />
-        <TextBox id="demand_theme" default="" desc="需求主题" type="demand_theme" tip="" method="None" index="1"
-        />
+        <TextBox id="demand_theme" default="" desc="需求主题" type="string" tip="" method="None" index="1"/>
         <TextBox id="id" desc="需求单号" edittype="text" datatype="string" index="2" />
-        <Option id="rel_system_name" default="" desc="关联系统名称" type="rel_system_name"  method="None" index="3"/>
+        <TextBox id="rel_system_name" default="" desc="关联系统名称" type="string"  method="None" index="3"/>
     </Where>
 
     <Operations>
