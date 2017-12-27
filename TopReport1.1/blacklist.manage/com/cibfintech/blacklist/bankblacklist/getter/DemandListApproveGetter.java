@@ -9,7 +9,6 @@ import com.huateng.ebank.framework.report.common.ReportConstant;
 import com.huateng.ebank.framework.web.commQuery.BaseGetter;
 import com.huateng.exception.AppException;
 import org.apache.commons.lang.StringUtils;
-import resource.bean.blacklist.NsDemandList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,22 +40,23 @@ public class DemandListApproveGetter extends BaseGetter {
         int pageIndex = this.getResult().getPage().getCurrentPage();
         List<Object> list = new ArrayList<Object>();
 
-        StringBuffer hql = new StringBuffer(" from NsDemandList bblt where bblt.is_del='0' ");
+        StringBuffer hql = new StringBuffer(" from NsDemandList bblt where 1=1 ");
+        hql.append("and bblt.is_del='0' ");
         if (StringUtils.isNotBlank(bank_name)) {
-            hql.append(" and bblt.bank_name like '%").append(bank_name.trim()).append("%'");
-            list.add(bank_name.trim());
+            hql.append(" and bblt.bank_name like ?");
+            list.add("%" + bank_name.trim() + "%");
         }
         if (StringUtils.isNotBlank(status_cd)) {
-            hql.append(" and bblt.status_cd ='").append(status_cd.trim()).append("'");
+            hql.append(" and bblt.status_cd =?");
             list.add(status_cd.trim());
         }
         if (StringUtils.isNotBlank(rel_system_name)) {
-            hql.append(" and bblt.rel_system_name like '%").append(rel_system_name.trim()).append("%'");
-            list.add(rel_system_name.trim());
+            hql.append(" and bblt.rel_system_name like ?");
+            list.add("%" + rel_system_name.trim() + "%");
         }
         if (StringUtils.isNotBlank(id)) {
-            hql.append(" and bblt.id='").append(id.trim()).append("'");
-            list.add(id.trim());
+            hql.append(" and bblt.id like ?");
+            list.add("%" + id.trim() + "%");
         }
         PageQueryResult pqr = DemandListService.getInstance().pageQueryByHql(pageIndex, pageSize, hql.toString(), list);
         return pqr;

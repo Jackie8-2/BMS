@@ -18,9 +18,7 @@
                     <tr>
                         <td colspan="2">
 							<@CommonQueryMacro.DataTable id="datatable1" paginationbar=""
-                            fieldStr="id,hourly_wage,demand_theme,rel_system_name,rel_system_team,"+
-                            "dev_name,bank_start,dev_day,dev_quote_day,dev_confirm_day,confirm_no,"+
-                            "customer_manager,cop_bank_principal,cop_bank_principal_phone,remarks"
+                            fieldStr="id,bank_id,bank_name,bank_type,bank_start,hourly_wage,demand_theme,rel_system_name,rel_system_team,dev_name,dev_day,dev_quote_day,dev_confirm_day,confirm_no,customer_manager,cop_bank_principal,cop_bank_principal_phone,status_cd,remarks"
                             width="100%" hasFrame="true"/><br/>
                         </td>
                     </tr>

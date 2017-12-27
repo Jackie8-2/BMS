@@ -38,22 +38,23 @@ public class DemandListEditGetter extends BaseGetter{
         int pageIndex = this.getResult().getPage().getCurrentPage();
         List<Object> list = new ArrayList<Object>();
 
-        StringBuffer hql = new StringBuffer(" from NsDemandList bblt where bblt.is_del='0' ");
+        StringBuffer hql = new StringBuffer(" from NsDemandList bblt where 1=1 ");
+        hql.append(" and bblt.is_del='0' ");
         if (StringUtils.isNotBlank(bank_name)) {
-            hql.append(" and bblt.bank_name like '%").append(bank_name.trim()).append("%'");
-            list.add(bank_name.trim());
+            hql.append(" and bblt.bank_name like ?");
+            list.add("%" + bank_name.trim() + "%");
         }
         if (StringUtils.isNotBlank(demand_theme)) {
-            hql.append(" and bblt.demand_theme like '%").append(demand_theme.trim()).append("%'");
-            list.add(demand_theme.trim());
+            hql.append(" and bblt.demand_theme like ?");
+            list.add("%" + demand_theme.trim() + "%");
         }
         if (StringUtils.isNotBlank(rel_system_name)) {
-            hql.append(" and bblt.rel_system_name like '%").append(rel_system_name.trim()).append("%'");
-            list.add(rel_system_name.trim());
+            hql.append(" and bblt.rel_system_name like ?");
+            list.add("%" + rel_system_name.trim() + "%");
         }
         if (StringUtils.isNotBlank(id)) {
-            hql.append(" and bblt.id='").append(id.trim()).append("'");
-            list.add(id.trim());
+            hql.append(" and bblt.id like ?");
+            list.add("%" + id.trim() + "%");
         }
         PageQueryResult pqr = DemandListService.getInstance().pageQueryByHql(pageIndex, pageSize, hql.toString(), list);
         return pqr;

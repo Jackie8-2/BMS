@@ -34,9 +34,9 @@
 
     <Where>
         <TextBox id="bank_name" desc="合作行名称" edittype="text" datatype="string" require="" index="0" />
-        <TextBox id="status_cd" default="" desc="审核状态" edittype="select" translated="LIST:0,待审核;1,正常" type="string" tip="" method="None" index="1"/>
+        <Option id="status_cd"  desc="审核状态" edittype="select" translated="LIST:0,待审核;1,正常" type="string" tip="" method="None" index="1"/>
         <TextBox id="id" desc="需求单号" edittype="text" datatype="string" index="2" />
-        <TextBox id="rel_system_name" default="" desc="关联系统名称" type="string"  method="None" index="3"/>
+        <TextBox id="rel_system_name" edittype="text" desc="关联系统名称" type="string"  method="None" index="3"/>
     </Where>
 
     <Operations>

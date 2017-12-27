@@ -7,8 +7,6 @@
          txnlogflag="true" transdataactionurl="/trans/TransDataAction.do" getterclassname="com.cibfintech.blacklist.bankblacklist.getter.DemandListEntryGetter">
 
     <Include id="BankParam" />
-    <PageQryExp type="XLS" limit="true" encoding="UTF-8" url="/trans/qryExp.do" desc="批量下载需求信息" perfetch="15" />
-
     <Fields>
         <Field id="bank_id" desc="合作行编号" edittype="text" datatype="string" status="F" xpath="/bank_id" />
         <Field id="bank_name" desc="合作行名称" edittype="text" datatype="string" status="N" xpath="/bank_name" />
@@ -38,7 +36,7 @@
         <TextBox id="demand_theme" default="" desc="需求主题" type="string" tip="" method="None" index="1"
         />
         <TextBox id="id" desc="需求单号" edittype="text" datatype="string" index="2" />
-        <Option id="status_cd" default="" desc="审核状态" type="string" tip="" method="None" index="3"
+        <Option id="status_cd" edittype="select" desc="审核状态" type="string" tip="" method="None" index="3"
                 translated="LIST:0,待审核;1,正常" />
     </Where>
 
